@@ -26,3 +26,9 @@
 <img src='task_1_4.jpg'>
 
 3. 3-7 задания: https://github.com/NataliyaYadykina/data_collection/blob/main/homework/hw1/hw1.py
+
+Скрины пары запросов:
+
+<img src='response_task_3-7.jpg'>
+
+<img src='response_task_3-7_2.jpg'>
