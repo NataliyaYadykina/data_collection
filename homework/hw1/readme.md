@@ -25,4 +25,4 @@
 - рекомендованное вино:
 <img src='task_1_4.jpg'>
 
-3. 3-7 задания: https://ya.ru
+3. 3-7 задания: https://github.com/NataliyaYadykina/data_collection/blob/main/homework/hw1/hw1.py
