@@ -1,21 +1,22 @@
 import requests
 import json
-import os
-from dotenv import load_dotenv
+# import os
+# from dotenv import load_dotenv
 
-dotenv_path = os.path.join(os.path.dirname(__file__), "../../.env")
-if os.path.exists(dotenv_path):
-    load_dotenv(dotenv_path)
-else:
-    print('Not found env')
+# dotenv_path = os.path.join(os.path.dirname(__file__), "../../.env")
+# if os.path.exists(dotenv_path):
+#     load_dotenv(dotenv_path)
+# else:
+#     print('Not found env')
 
 url = "https://api.foursquare.com/v3/places/search"
 
-query = input('Введите категорию для поиска: ')
+query = input(
+    'Введите категорию для поиска (например, кофейни, парки, рестораны и т.д.): ')
 
 headers = {
     "accept": "application/json",
-    "Authorization": os.getenv("API_KEY_Foursquare")
+    "Authorization": 'fsq3qokEN4ucJRwc8D8oPNMbL6c+s1j5qCSzlFXLTDRBFaA='
 }
 
 params = {
@@ -31,7 +32,10 @@ if response.status_code == 200:
     for venue in venues:
         print("Название:", venue["name"])
         print("Страна:", venue["location"]["country"])
-        print("Населенный пункт:", venue["location"]["locality"])
+        if 'address' in venue["location"].keys():
+            print("Населенный пункт:", venue["location"]["locality"])
+        else:
+            print("Населенный пункт:", "Не указан")
         if 'address' in venue["location"].keys():
             print("Адрес:", venue["location"]["address"])
         else:
