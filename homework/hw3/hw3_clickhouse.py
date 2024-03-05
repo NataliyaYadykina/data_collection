@@ -23,7 +23,7 @@ ORDER BY id
 
 print("Таблица создана успешно.")
 
-with open('hw3.json', 'r') as file:
+with open('homework/hw3/hw3.json', 'r') as file:
     data = json.load(file)
 
 # Вставка данных в таблицу
