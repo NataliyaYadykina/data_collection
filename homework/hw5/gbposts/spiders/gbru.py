@@ -1,6 +1,6 @@
 import scrapy
 from scrapy.http import HtmlResponse
-from ..items import GbpostsItem
+from items import GbpostsItem
 
 
 class GbruSpider(scrapy.Spider):
@@ -12,7 +12,7 @@ class GbruSpider(scrapy.Spider):
 
         next_link = response.xpath("//li[@class='next']/a/@href").get()
         if next_link:
-            yield response.follow(self.start_urls, callback=self.parse)
+            yield response.follow(next_link, callback=self.parse)
 
         links = response.xpath(
             "//div[@class='image_container']/a/@href").getall()
@@ -21,8 +21,6 @@ class GbruSpider(scrapy.Spider):
 
     def gb_parse(self, response: HtmlResponse):
         title = response.xpath("//h1/text()").get()
-        instock = response.xpath(
-            "//p[@class='instock availability']/text()").get()
         url = response.url
         price = response.xpath("//p[@class='price_color']/text()").get()
-        yield GbpostsItem(title=title, instock=instock, url=url, price=price)
+        yield GbpostsItem(title=title, url=url, price=price)

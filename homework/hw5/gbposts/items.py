@@ -9,6 +9,5 @@ import scrapy
 class GbpostsItem(scrapy.Item):
     # define the fields for your item here like:
     title = scrapy.Field()
-    instock = scrapy.Field()
     url = scrapy.Field()
     price = scrapy.Field()

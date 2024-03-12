@@ -5,15 +5,19 @@
 
 
 # useful for handling different item types with a single interface
-# from itemadapter import ItemAdapter
+from itemadapter import ItemAdapter
 import json
 
 
 class GbpostsPipeline:
-    books = []
+
+    def open_spider(self, spider):
+        self.file = open("items.jsonl", "w")
+
+    def close_spider(self, spider):
+        self.file.close()
 
     def process_item(self, item, spider):
-        self.books.append(item)
-
-        with open(f'homework/hw5/{spider.name}.json', 'a', encoding='utf8') as f:
-            json.dump(self.books, f)
+        line = json.dumps(ItemAdapter(item).asdict()) + "\n"
+        self.file.write(line)
+        return item
