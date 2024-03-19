@@ -12,7 +12,7 @@ import json
 class GbpostsPipeline:
 
     def open_spider(self, spider):
-        self.file = open("items.jsonl", "w")
+        self.file = open("items1.jsonl", "w")
 
     def close_spider(self, spider):
         self.file.close()
